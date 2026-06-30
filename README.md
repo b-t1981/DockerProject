@@ -27,6 +27,19 @@ Vos donnees : `wordpress/data/` (sur la cle USB).
 
 Guide : [docker-vm/README.md](docker-vm/README.md)
 
+## Cle USB autonome (sans Docker Desktop)
+
+Dossier **`UsbKey/`** — tout-en-un pour PC sans Docker :
+
+```powershell
+cd UsbKey
+.\prepare-usbkey.ps1
+```
+
+Puis copiez `UsbKey\` sur la cle USB. Sur le PC invite : double-clic **`LANCER.bat`**.
+
+Guide : [UsbKey/README.md](UsbKey/README.md)
+
 ## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.21)
 
 Parcours dans le dossier `wordpress/` : compose, volumes, variables d'environnement, healthcheck, phpMyAdmin et Dockerfile personnalisé.

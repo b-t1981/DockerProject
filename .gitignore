@@ -23,6 +23,13 @@ docker-vm/wsl/images.tar
 docker-vm/wsl/build-temp/
 docker-vm/wsl/distro/
 docker-vm/wsl/docker-bin/
+
+# Cle USB prete a l'emploi (gros fichiers)
+UsbKey/wsl/docker-linux.tar
+UsbKey/wsl/images.tar
+UsbKey/wsl/distro/
+UsbKey/wordpress/data/
+UsbKey/wordpress/.env
 docker-vm/vbox/vm/
 
 # Sauvegardes SQL locales
