@@ -39,9 +39,14 @@ for i in \$(seq 1 30); do docker info >/dev/null 2>&1 && break; sleep 1; done
 if [ -f '$wslImages' ]; then
   docker image inspect mariadb:11 >/dev/null 2>&1 || docker load -i '$wslImages'
 fi
+docker tag wordpress:latest wordpress:6-apache 2>/dev/null || true
 cd '$wslWp'
 [ -f .env ] || cp .env.example .env
-docker compose up -d
+if docker image inspect wordpress-wordpress:latest >/dev/null 2>&1; then
+  docker compose up -d --no-build
+else
+  docker compose up -d
+fi
 echo ''
 echo 'WordPress  : http://localhost:8080'
 echo 'phpMyAdmin : http://localhost:8081'
