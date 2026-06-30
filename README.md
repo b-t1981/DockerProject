@@ -27,3 +27,16 @@ docker compose up --build -d
 - phpMyAdmin : http://localhost:8081
 
 Consultez [wordpress/README.md](wordpress/README.md) pour le détail de chaque étape.
+
+## Docker sans installation (PC invité)
+
+Sur un poste **sans Docker Desktop**, utilisez le client portable + Docker distant :
+
+```powershell
+cd portable
+# Telechargez docker.exe dans portable\bin/ (voir portable/README.md)
+.\setup-remote.ps1 -HostName "IP-PC-MAISON" -UserName "votre_user"
+.\docker-remote.ps1 compose -f ..\wordpress\docker-compose.yml up -d
+```
+
+Guide complet : [portable/README.md](portable/README.md)

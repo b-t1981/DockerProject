@@ -9,3 +9,6 @@ wordpress/data/db/
 wordpress/data/wordpress/
 wordpress/backups/
 wordpress/.env
+
+# Client Docker portable (binaire a telecharger)
+portable/bin/docker.exe
