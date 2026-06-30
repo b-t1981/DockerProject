@@ -13,7 +13,7 @@ docker compose up --build
 
 Application : http://localhost:8080
 
-## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.15)
+## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.16)
 
 Parcours dans le dossier `wordpress/` : compose, volumes, variables d'environnement, healthcheck, phpMyAdmin et Dockerfile personnalisé.
 

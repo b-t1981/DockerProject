@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 .venv/
 node_modules/
+
+# Données WordPress portables (ne pas versionner sur GitHub)
+wordpress/data/db/
+wordpress/data/wordpress/
+wordpress/backups/
+wordpress/.env
