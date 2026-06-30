@@ -18,15 +18,41 @@ PC invité (sans Docker)          PC maison / serveur cloud
 ### Sur la machine qui fait tourner Docker (chez vous)
 
 1. Docker Desktop **ou** Docker Engine doit tourner en permanence
-2. SSH activé (Windows : Paramètres → Système → Bureau à distance / OpenSSH)
-3. Votre utilisateur dans le groupe `docker` (Linux) ou accès Docker Desktop
+2. SSH activé — script fourni :
+   ```powershell
+   # PowerShell en administrateur
+   cd portable
+   .\activer-ssh.ps1
+   ```
+3. Votre utilisateur Windows doit pouvoir se connecter en SSH
 
 ### Sur le PC invité (sans Docker installé)
 
-1. Téléchargez **uniquement** le client Docker (~60 Mo) :
-   https://download.docker.com/win/static/stable/x86_64/docker-29.5.3.zip
-2. Extrayez `docker.exe` dans `portable/bin/` (ou sur votre clé USB)
-3. OpenSSH client (déjà présent sur Windows 10/11)
+1. Installez le client portable :
+   ```powershell
+   cd portable
+   .\install.ps1
+   ```
+   (ou utilisez `bin\docker.exe` déjà présent sur la clé USB)
+2. OpenSSH client (déjà présent sur Windows 10/11)
+
+## Démarrage rapide (même PC avec Docker Desktop)
+
+Double-clic sur **`LANCER.bat`** ou :
+
+```powershell
+cd portable
+.\lancer-wordpress.ps1
+```
+
+## Préparer une clé USB
+
+```powershell
+cd portable
+.\pack-usb.ps1 -DriveLetter "E"
+```
+
+Copie tout le projet + `docker.exe` + `wordpress/data/` sur la clé.
 
 ## Configuration rapide
 
