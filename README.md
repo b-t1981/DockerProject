@@ -13,23 +13,21 @@ docker compose up --build
 
 Application : http://localhost:8080
 
-## Lancer WordPress (n'importe quel PC)
+## Lancer WordPress (Docker ou rien)
 
-Double-clic sur **`LANCER.bat`** a la racine :
+Double-clic sur **`LANCER.bat`** :
 
-| PC | Mode utilise |
-|----|--------------|
-| Docker Desktop installe | Docker (WordPress + MariaDB en conteneurs) |
-| Sans Docker | Laragon Portable (PHP + MariaDB sur la cle USB) |
+| Priorite | Mode | Condition |
+|----------|------|-----------|
+| 1 | Docker Desktop | Deja installe sur le PC |
+| 2 | **Linux WSL embarque** | `docker-linux.tar` sur la cle USB |
+| 3 | VM Linux VirtualBox | Plan B si WSL impossible |
 
-Vos donnees suivent dans `wordpress/data/`.
+Vos donnees : `wordpress/data/` (sur la cle USB).
 
-- Docker : http://localhost:8080
-- Sans Docker : http://localhost/wordpress
+Guide : [docker-vm/README.md](docker-vm/README.md)
 
-Guide sans Docker : [sans-docker/README.md](sans-docker/README.md)
-
-## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.20)
+## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.21)
 
 Parcours dans le dossier `wordpress/` : compose, volumes, variables d'environnement, healthcheck, phpMyAdmin et Dockerfile personnalisé.
 

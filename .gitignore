@@ -14,8 +14,14 @@ wordpress/.env
 portable/bin/docker.exe
 portable/bin/docker/
 
-# Laragon portable (a telecharger)
+# Laragon (deprecie)
 sans-docker/laragon/
+
+# Linux+Docker embarque WSL (gros fichier, sur cle USB)
+docker-vm/wsl/docker-linux.tar
+docker-vm/wsl/build-temp/
+docker-vm/wsl/distro/
+docker-vm/vbox/vm/
 
 # Sauvegardes SQL locales
 wordpress/data/backup/
