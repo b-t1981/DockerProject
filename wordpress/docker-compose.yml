@@ -13,6 +13,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - web
+      - data
 
   db:
     image: mariadb:11
@@ -28,6 +31,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - data
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -40,7 +45,17 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - web
+      - data
 
 volumes:
   wp_data:
   db_data:
+
+networks:
+  web:
+    driver: bridge
+  data:
+    driver: bridge
+    internal: true
