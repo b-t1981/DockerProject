@@ -22,4 +22,8 @@ phpMyAdmin : http://localhost:8081
 | v0.11 | Variables d'environnement (.env) |
 | v0.12 | Healthcheck et dépendances |
 | v0.13 | Service phpMyAdmin |
-| v0.14 | Dockerfile personnalisé |
+| v0.14 | Dockerfile personnalisé (thème WordPress) |
+
+## Thème personnalisé
+
+À partir de v0.14, WordPress est construit à partir d'une image custom qui inclut le thème `docker-learning`. Après le premier démarrage, activez-le dans **Apparence → Thèmes** dans l'admin WordPress.

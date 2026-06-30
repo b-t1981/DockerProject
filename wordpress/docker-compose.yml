@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: wordpress:6-apache
+    build: ./custom
     ports:
       - "8080:80"
     environment:
