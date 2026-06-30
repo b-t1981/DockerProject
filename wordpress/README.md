@@ -11,6 +11,7 @@ docker compose up -d
 ```
 
 WordPress : http://localhost:8080
+phpMyAdmin : http://localhost:8081
 
 ## Étapes du parcours
 
