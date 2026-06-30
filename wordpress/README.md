@@ -6,6 +6,7 @@ Ce dossier contient un parcours progressif pour apprendre Docker avec WordPress 
 
 ```bash
 cd wordpress
+cp .env.example .env   # Windows : copy .env.example .env
 docker compose up -d
 ```
 
