@@ -16,7 +16,7 @@ WordPress : http://localhost:8080
 | Version | Notion |
 |---------|--------|
 | v0.9 | Compose minimal (2 services) |
-| v0.10 | Volumes nommés (persistance) |
+| v0.10 | Volumes nommés (persistance des données) |
 | v0.11 | Variables d'environnement (.env) |
 | v0.12 | Healthcheck et dépendances |
 | v0.13 | Service phpMyAdmin |
