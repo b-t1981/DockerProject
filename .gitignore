@@ -10,6 +10,12 @@ wordpress/data/wordpress/
 wordpress/backups/
 wordpress/.env
 
-# Client Docker portable (binaire a telecharger via install.ps1)
+# Client Docker portable
 portable/bin/docker.exe
 portable/bin/docker/
+
+# Laragon portable (a telecharger)
+sans-docker/laragon/
+
+# Sauvegardes SQL locales
+wordpress/data/backup/

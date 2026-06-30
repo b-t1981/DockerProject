@@ -13,7 +13,23 @@ docker compose up --build
 
 Application : http://localhost:8080
 
-## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.16)
+## Lancer WordPress (n'importe quel PC)
+
+Double-clic sur **`LANCER.bat`** a la racine :
+
+| PC | Mode utilise |
+|----|--------------|
+| Docker Desktop installe | Docker (WordPress + MariaDB en conteneurs) |
+| Sans Docker | Laragon Portable (PHP + MariaDB sur la cle USB) |
+
+Vos donnees suivent dans `wordpress/data/`.
+
+- Docker : http://localhost:8080
+- Sans Docker : http://localhost/wordpress
+
+Guide sans Docker : [sans-docker/README.md](sans-docker/README.md)
+
+## Chapitre 2 — WordPress + MariaDB (v0.9 → v0.20)
 
 Parcours dans le dossier `wordpress/` : compose, volumes, variables d'environnement, healthcheck, phpMyAdmin et Dockerfile personnalisé.
 
@@ -27,16 +43,3 @@ docker compose up --build -d
 - phpMyAdmin : http://localhost:8081
 
 Consultez [wordpress/README.md](wordpress/README.md) pour le détail de chaque étape.
-
-## Docker sans installation (PC invité)
-
-Sur un poste **sans Docker Desktop**, utilisez le client portable + Docker distant :
-
-```powershell
-cd portable
-# Telechargez docker.exe dans portable\bin/ (voir portable/README.md)
-.\setup-remote.ps1 -HostName "IP-PC-MAISON" -UserName "votre_user"
-.\docker-remote.ps1 compose -f ..\wordpress\docker-compose.yml up -d
-```
-
-Guide complet : [portable/README.md](portable/README.md)
