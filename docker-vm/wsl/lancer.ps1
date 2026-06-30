@@ -4,10 +4,16 @@
 $ErrorActionPreference = "Stop"
 $distroName = "DockerProject"
 $tarFile = Join-Path $PSScriptRoot "docker-linux.tar"
+$imagesTar = Join-Path $PSScriptRoot "images.tar"
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $wpDir = Join-Path $projectRoot "wordpress"
 
-# Installer la distro si necessaire
+function Win-ToWsl($path) {
+    $p = $path -replace '\\', '/'
+    if ($p -match '^([A-Za-z]):(.*)') { return "/mnt/$($matches[1].ToLower())$($matches[2])" }
+    return $p
+}
+
 $existing = wsl -l -q 2>$null | Where-Object { $_ -match $distroName }
 if (-not $existing) {
     if (-not (Test-Path $tarFile)) {
@@ -17,40 +23,32 @@ if (-not $existing) {
     & (Join-Path $PSScriptRoot "install-distro.ps1")
 }
 
-# Convertir chemin Windows en chemin WSL
-function Win-ToWsl($path) {
-    $p = $path -replace '\\', '/'
-    if ($p -match '^([A-Za-z]):(.*)') {
-        return "/mnt/$($matches[1].ToLower())$($matches[2])"
-    }
-    return $p
-}
-
-$wslProject = Win-ToWsl $projectRoot
-$wslWp = Win-ToWsl $wpDir
-
-# .env
 $envFile = Join-Path $wpDir ".env"
 if (-not (Test-Path $envFile)) {
     Copy-Item (Join-Path $wpDir ".env.example") $envFile
 }
 
-Write-Host "Demarrage Docker dans Linux (WSL)..."
+$wslWp = Win-ToWsl $wpDir
+$wslImages = Win-ToWsl $imagesTar
+
 $launchScript = @"
 #!/bin/bash
 set -e
-sudo service docker start 2>/dev/null || sudo dockerd > /tmp/dockerd.log 2>&1 &
-sleep 3
-until docker info >/dev/null 2>&1; do sleep 1; done
+dockerd --iptables=false --ip6tables=false > /tmp/dockerd.log 2>&1 &
+for i in \$(seq 1 30); do docker info >/dev/null 2>&1 && break; sleep 1; done
+if [ -f '$wslImages' ]; then
+  docker image inspect mariadb:11 >/dev/null 2>&1 || docker load -i '$wslImages'
+fi
 cd '$wslWp'
-if [ ! -f .env ]; then cp .env.example .env; fi
-docker compose up --build -d
+[ -f .env ] || cp .env.example .env
+docker compose up -d
 echo ''
 echo 'WordPress  : http://localhost:8080'
 echo 'phpMyAdmin : http://localhost:8081'
 "@
 
-$launchScript | wsl -d $distroName -e bash
+$launchScript = $launchScript.Replace("`r`n", "`n")
+$launchScript | wsl -d $distroName -u root -e bash
 
 Write-Host ""
 Write-Host "WordPress : http://localhost:8080"

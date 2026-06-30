@@ -19,8 +19,10 @@ sans-docker/laragon/
 
 # Linux+Docker embarque WSL (gros fichier, sur cle USB)
 docker-vm/wsl/docker-linux.tar
+docker-vm/wsl/images.tar
 docker-vm/wsl/build-temp/
 docker-vm/wsl/distro/
+docker-vm/wsl/docker-bin/
 docker-vm/vbox/vm/
 
 # Sauvegardes SQL locales
